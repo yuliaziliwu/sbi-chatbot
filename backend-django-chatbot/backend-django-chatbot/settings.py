@@ -73,12 +73,19 @@ WSGI_APPLICATION = 'backend-django-chatbot.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+            'default': {
+                'ENGINE': 'mssql',
+                'NAME': 'localsys', # sama dengan initial catalog
+                'USER': 'sa',  # sama dengan user id
+                'PASSWORD': 'sumitomo',
+                'HOST': 'localhost', # sama dengan data source
+                'PORT': '', # Biarkan kosong jika menggunakan port default
+                'OPTIONS': {
+                    'driver': 'ODBC Driver 17 for SQL Server', # Atau driver lain yang Anda gunakan
+                    # 'extra_params': 'Application Name=Chatbot SBI',
+                },
+            }
+        }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -104,7 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
