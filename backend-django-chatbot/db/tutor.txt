@@ -1,0 +1,37 @@
+Cara setup Django
+
+Susunan folder : backend-django-chatbot/backend-django-chatbot
+
+1. Install python dan cek versinya
+2. Download python extention di vscode.
+3. Ke folder pertama buat virtual env. command :'python -m venv venv'
+4. Aktifkan venv. ke Scripts lalu activate.bat
+5. Balik ke folder backend pertama, install Django nya : 'pip install django'
+6. Setelah sukses smua, buat 'django-admin startproject myproject .', rename aja myproject itu dengan nama file yang kamu mau, trus buka masing2 file di folder baru itu dan replace myproject dengan nama project baru.
+7. Pastikan lagi di folder backend terluar tapi jalaninnya dari venv 'python manage.py runserver'
+⦁	Kalau misalnya pas jalanin venv dalam project nya ada warning (contoh kode django.core.asgi ditandai kuning) pastikan memakai interpreteur dari venv itu, cek di ctrl+shift+p, pilih path yang sesuai dengan venv itu.
+⦁	Kalau misalnya ketika di run tetep ga bisa, pastikan env lagi nyala, berada pada backend paling luar, 'pip install django'
+8. Kalau sudah muncul url, berarti dah berhasil.
+
+
+Connect django dengan sql server
+1.	Aktifkan .venv
+2.	Buka folder backend kedua tapi harus venv yg udah aktif
+3.	'pip install mssql-django'
+4.	Buka settings.py setup database nya:
+DATABASES = {
+            'default': {
+                'ENGINE': 'mssql',
+                'NAME': 'localsys', # sama dengan initial catalog
+                'USER': 'sa',  # sama dengan user id
+                'PASSWORD': 'sumitomo',
+                'HOST': 'localhost', # sama dengan data source
+                'PORT': '', # Biarkan kosong jika menggunakan port default
+                'OPTIONS': {
+                    'driver': 'ODBC Driver 17 for SQL Server', # Atau driver lain yang Anda gunakan
+                    'extra_params': 'Application Name=Chatbot SBI',
+                },
+            }
+        }
+1.	Jalankan 'python manage.py migrate'
+2.	apakah sudah jalan? cek dengan 'python manage.py dbshell'

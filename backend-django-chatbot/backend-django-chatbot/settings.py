@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'backend-django-chatbot.wsgi.application'
 DATABASES = {
             'default': {
                 'ENGINE': 'mssql',
-                'NAME': 'localsys', # sama dengan initial catalog
+                'NAME': 'db_chatbot', # sama dengan initial catalog
                 'USER': 'sa',  # sama dengan user id
                 'PASSWORD': 'sumitomo',
                 'HOST': 'localhost', # sama dengan data source

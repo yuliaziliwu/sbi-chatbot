@@ -1,0 +1,64 @@
+AI - CHATBOT SBI
+
+- Streamlit	: framework python biasanya untuk ML dan adta science web apps.
+
+⦁	React	: FE
+⦁	Django	: BE
+⦁	SQL Server	: database
+⦁	Kaggel ambil data banyak	: https://www.kaggle.com/code/kushagrathisside/data-ingestion-from-links-beginner-s-guide
+⦁	Pake Kaggle dataset sendiri	: https://www.kaggle.com/code/kushagrathisside/data-ingestion-from-links-beginner-s-guide?scriptVersionId=130346979&cellId=13
+⦁	Pake Kaggle dataset di colab	: https://www.kaggle.com/code/kushagrathisside/data-ingestion-from-links-beginner-s-guide?scriptVersionId=130346979&cellId=15
+⦁	Baca dataset kagle ke colan	: https://namakutiwik.medium.com/read-dataset-from-kaggle-using-colab-bc40cdde0ab9
+⦁	Dataset IT	: https://www.kaggle.com/code/mf6914368/chatbot/input
+
+FITUR:
+1.	AI
+2.	CRUD ADMIN
+
+KEBUTUHAN AI:
+1. Percakapan sehari-hari
+2. Trouble shooting seputar IT (kode, masalah teknis PC, server, monitor, cctv, printer, fotocopy dan masih banyak lagi)
+3. Trouble shooting seputar accounting (dari perumusan laporan, rumus perhitungan excel, pemecahan masalah laporan yang sulit dirapikan)
+4. Trouble shooting seputar mesin pembuat wiring harnes dan spare parts.
+
+Kurang lebih seperti AI pada umumnya, tetapi nanti ada juga data sumitomo didalamnya.
+
+CARA MEMBUAT AI?
+1. Gimana cara memakai dataset dari sumber yang banyak? contohnya aku butuh machine learning dari dataset yang berbeda, nlp dan nlu juga dari sumber yang berbeda, kemudian mau menambahkan juga dataset sendiri (perusahaan). gimana cara menggabungkannya dan menggunakannya juga. Dataset yang dimaksud bisa dalam bentuk gambar dan juga teks.
+2. Kalau model apa bisa digabungkan juga model yang berbeda dalam satu training ai?
+3. Model terbaik, tidak berbayar, lancer, akurasi bisa sampai 85%++, untuk menangani ai ini apa aja? kasi pilihan dan alasannya.
+4. Bagaimana cara trainingnya agar hasil maksimal, tidak crash, underfitting dan overfitting.
+5. Pendekatan yang seperti apa yang cocok untuk membuat ai yang sempurna ini?
+
+STEP IMPLEMENTASI:
+1.	Brainstorming
+-> Fitur apa aja
+-> Cakupan isi data AI
+-> Mau pakai model apa aja, compare beberapa model dan pertimbangkan akurasi dan harganya
+-> Kumpulkan dataset
+-> Tentukan framework yang mau dipake (FE, BE, DB, apakah pakai docker dan lain-lain?)
+-> Buat desain input output
+-> Buat desain cara kerja ai dan system prompt nya
+-> Cari tau gimana cara hosting di internal
+2.	Eksekusi
+-> Buat AI nya di colab (pastikan dataset udah matang dan gada perubahan)
+-> Cek akurasi dan update ai sampai akurasi 95% baru disambungkan ke BE (biar tidak berkali2 kerja)
+-> Buat FE nya
+-> Buat BE nya
+3.	Revisi
+-> Revisi UI
+-> Tambahkan fitur lainnya (agar tidak chatbot tok doang)
+-> Revisi ke mentor
+4.	Deploy
+
+Konsep:
+Upload file -> BE Embedding dataset baru (ekstrak teks - generate embedding - update index) -> Ditambahkan ke vector DB -> Proses -> Prompt -> Output
+1. Admin upload file baru dengan format csv. Kemudian file itu dideteksi oleh backend.
+2. BE akan embedding vector, hasilnya akan disimpan ke vector DB (FAISS/Pinecone/Milvus).
+3. Prompt dari chatbot akan meng query ke vector DB, bukan ke file mentah lagi.
+4. Kalau ada data baru, cukup tambahkan embedding baru ke vector DB, jadi ga perlu di retrain ulang semua.
+
+ini bakal works disaat dataset semakin besar, agar ai tidak lama cari jawaban. jadi cukup dengan cari vector terdekat dari ribuan embedding dia udah bisa kasi jawaban. Prompt itukan ga bisa langsung dipahami oleh AI, jadi teks itu diubah dulu ke angka (vector) dgn model embedding. nah sifat embedding itu:
+- kalua teks mirip 		: vektornya dekat
+- kalua teks berbeda jauh 	: vektornya jauh
+Embedding ini dilakukan oleh backend, bukan manusia.
